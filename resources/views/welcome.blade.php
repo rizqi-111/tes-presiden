@@ -9,7 +9,6 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.4/dist/tailwind.min.css" rel="stylesheet">
 
         <style>
             table, th, td {
@@ -24,24 +23,41 @@
     <body class="antialiased">
 
         <div class="ml-4 mt-4">
-            <table>
+            <table aria-describedby="Profil Capres-Cawapres">
+                <tr>
+                    <th scope="col">Nomor Urut</th>
+                    <th scope="col">Calon Presiden</th>
+                    <th scope="col">Calon Wakil Presiden</th>
+                </tr>
                 @for ($i = 0; $i <= 2; $i++)
                     <tr>
-                        <td>{{ $capres[$i]['nomor_urut'] }}</td>
+                        <td>{{ $capres[$i]->nomorUrut }}</td>
                         <td>
-                            <p>{{ $capres[$i]['nama_lengkap'] }}</p>
-                            <p>{{ $capres[$i]['tempat_tanggal_lahir'] }}</p>
+                            <p>{{ $capres[$i]->namaLengkap }}</p>
+                            <p>
+                                {{ $capres[$i]->tempatLahir . ', ' . $capres[$i]->tanggalLahir->format('j F Y') }}
+                            </p>
                             <p><strong>Karir : </strong></p>
-                            @foreach($capres[$i]['karir'] as $karir)
-                                <p>{{ $karir }}</p>
+                            @foreach($capres[$i]->karir as $karir)
+                                <p>
+                                    {{ $karir->jabatan .
+                                        "(" . $karir->tahunMulai .
+                                        ($karir->tahunSelesai ? "-" . $karir->tahunSelesai : "")  . ")" }}
+                                </p>
                             @endforeach
                         </td>
                         <td>
-                            <p>{{ $cawapres[$i]['nama_lengkap'] }}</p>
-                            <p>{{ $cawapres[$i]['tempat_tanggal_lahir'] }}</p>
+                            <p>{{ $cawapres[$i]->namaLengkap }}</p>
+                            <p>
+                                {{ $cawapres[$i]->tempatLahir . ', ' . $cawapres[$i]->tanggalLahir->format('j F Y') }}
+                            </p>
                             <p><strong>Karir : </strong></p>
-                            @foreach($cawapres[$i]['karir'] as $karir)
-                                <p>{{ $karir }}</p>
+                            @foreach($cawapres[$i]->karir as $karir)
+                                <p>
+                                    {{ $karir->jabatan .
+                                        "(" . $karir->tahunMulai .
+                                        ($karir->tahunSelesai ? "-" . $karir->tahunSelesai : "")  . ")" }}
+                                </p>
                             @endforeach
                         </td>
                     </tr>

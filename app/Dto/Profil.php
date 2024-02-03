@@ -8,21 +8,28 @@ use Carbon\Carbon;
 class Profil
 {
     public int $nomorUrut;
+    public string $namaLengkap;
     public PosisiTipe $posisi;
     public string $tempatLahir;
     public Carbon $tanggalLahir;
     public int $usia;
-    public Karir $karir;
+
+    /**
+     * @var array<Karir>
+     */
+    public array $karir;
 
     public function __construct(
         int $nomorUrut,
+        string $namaLengkap,
         PosisiTipe $posisi,
         string $tempatLahir,
         Carbon $tanggalLahir,
         int $usia,
-        Karir $karir
+        array $karir
     ) {
         $this->nomorUrut = $nomorUrut;
+        $this->namaLengkap = $namaLengkap;
         $this->posisi = $posisi;
         $this->tempatLahir = $tempatLahir;
         $this->tanggalLahir = $tanggalLahir;
