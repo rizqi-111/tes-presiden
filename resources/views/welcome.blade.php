@@ -14,7 +14,7 @@
             table, th, td {
                 border:1px solid black;
             }
-            td {
+            td, th {
                 padding-left: 10px;
                 padding-right: 10px;
             }
@@ -31,7 +31,7 @@
                 </tr>
                 @for ($i = 0; $i <= 2; $i++)
                     <tr>
-                        <td>{{ $capres[$i]->nomorUrut }}</td>
+                        <td style="text-align: center">{{ $capres[$i]->nomorUrut }}</td>
                         <td>
                             <p>{{ $capres[$i]->namaLengkap }}</p>
                             <p>
