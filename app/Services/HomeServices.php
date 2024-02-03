@@ -15,6 +15,7 @@ class HomeServices
             $capres = $get['calon_presiden'];
             $cawapres = $get['calon_wakil_presiden'];
 
+            //sorting by nomor_urut
             usort($capres, function ($a, $b) {
                 return strcmp($a['nomor_urut'], $b['nomor_urut']);
             });
